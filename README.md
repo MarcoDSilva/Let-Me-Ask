@@ -9,7 +9,7 @@ This was developed while following the NWL - Next Level Week, which is offered b
 
 This project was developed using the following:
 
-* (Node)[https://nodejs.org/en/]
+* [Node](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com/)
 * [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
@@ -22,6 +22,4 @@ clone, cd onto the folder and install the dependencies with yarn, then proceed t
 
 ## Layout
 
-Layout is available on [figma](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate?node-id=0%3A1).#� �L�e�t�-�M�e�-�A�s�k�
-�
-�
+Layout is available on [figma](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate?node-id=0%3A1)
