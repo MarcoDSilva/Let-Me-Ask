@@ -8,10 +8,13 @@ import { Button } from '../components/Button'
 import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss'
+import { FormEvent, useState } from 'react';
+import { database } from '../services/firebase';
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
+  const [roomCode, setRoomCode] = useState('');
 
   // called when btn is clicked to navigate to the new room route
   async function newRoomHandle() {
@@ -21,6 +24,21 @@ export function Home() {
     }
 
     history.push('/rooms/new');
+  }
+
+  async function joinRoom(event: FormEvent) {
+    event.preventDefault();
+
+    if (roomCode.trim() === '') return;
+
+    const roomRef = await database.ref(`rooms/${roomCode}`).get();
+
+    if (!roomRef.exists()) {
+      alert('Room does not exist!');
+      return;
+    }
+
+    history.push(`/rooms/${roomCode}`);
   }
 
   return (
@@ -38,10 +56,12 @@ export function Home() {
             Create your room with google
           </button>
           <div className="separator">or enter in another room</div>
-          <form action="">
+          <form onSubmit={joinRoom}>
             <input
               type="text"
               placeholder="Type the room code"
+              onChange={e => setRoomCode(e.target.value)}
+              value={roomCode}
             />
             <Button type="submit">
               Enter room
